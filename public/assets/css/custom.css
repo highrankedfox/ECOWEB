@@ -1,0 +1,20 @@
+@charset "UTF-8";
+
+/*!
+* Feuille de style personnalisée
+*/
+
+.btn-success.custom-btn {
+    background-color: #78c2a4;
+    border-color: #78c2a4;
+}
+
+.btn-success.custom-btn:hover {
+    background-color: #e3a76f;
+    border-color: #e3a76f;
+    transition: 0.3s ease-in;
+}
+
+.bandeau {
+    background-color: #78c2a4;
+}

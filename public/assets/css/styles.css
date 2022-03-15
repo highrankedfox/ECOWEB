@@ -11408,9 +11408,9 @@ section {
 section.cta {
   position: relative;
   padding: 15rem 0;
-  background-image: url("https://source.unsplash.com/5g41N3uRPf8/1500x800");
   background-position: center;
   background-size: cover;
+  background-image: url("https://images.pexels.com/photos/1527934/pexels-photo-1527934.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260");
 }
 section.cta .cta-content {
   position: relative;
@@ -11423,7 +11423,7 @@ section.cta:before {
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.5);
+  background: rgba(0, 0, 0, 0.1);
 }
 
 .icon-feature {
