@@ -1,8 +1,10 @@
 @charset "UTF-8";
 
-/*!
-* Feuille de style personnalisée
+/*
+* Feuille de style personnalisée pour EcoWeb
 */
+
+/* Style general */
 
 .btn-success.custom-btn {
     background-color: #78c2a4;
@@ -17,4 +19,33 @@
 
 .bandeau {
     background-color: #78c2a4;
+}
+
+#mainNav {
+    font-family: 'Fredoka', sans-serif;
+    font-weight: bold;
+}
+
+/* Contenu des pages */
+
+.blockcontainer {
+    padding: 7rem 7rem 0 7rem;
+    font-family: 'Raleway', sans-serif;
+    font-size: 18px;
+    color: black;
+}
+
+.blockcontainer a {
+    text-decoration: none;
+    color: #78c2a4;
+}
+
+.blockcontainer a:hover {
+    text-decoration: none;
+    color: brown;
+    transition: color 0.3s;
+}
+
+.blockcontainer h1 {
+    font-family: 'Fredoka', sans-serif;
 }
