@@ -4,12 +4,16 @@ namespace App\Form;
 
 use App\Entity\User;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
+use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Validator\Constraints\IsTrue;
+use Symfony\Component\Validator\Constraints\Length;
 
 class RegisterType extends AbstractType
 {
@@ -23,26 +27,34 @@ class RegisterType extends AbstractType
                 ]
             ])
             ->add('pseudo', TextType::class, [
+                'constraints' => new Length(['min' => 2, 'max' => 30]),
                 'label' => 'Pseudo',
                 'attr' => [
                     'placeholder' => 'Choisissez un pseudo'
                 ]
             ])
-            ->add('password', PasswordType::class, [
+            ->add('password', RepeatedType::class, [
+                'type' => PasswordType::class,
+                'invalid_message' => 'Les mots de passe ne coïncident pas.',
                 'label' => 'Mot de passe',
-                'attr' => [
-                    'placeholder' => 'Choisissez un mot de passe'
+                'required' => true,
+                'first_options' => [
+                    'label' => 'Choisissez un mot de passe'
+                ],
+                'second_options' => [
+                    'label' => 'Confirmez le mot de passe'
                 ]
             ])
-            ->add('password_confirm', PasswordType::class, [
+            ->add('termsAccepted', CheckboxType::class, array(
                 'mapped' => false,
-                'label' => 'Confirmation du mot de passe',
-                'attr' => [
-                    'placeholder' => 'Confirmez le mot de passe'
-                ]
-            ])
+                'constraints' => new IsTrue(),
+                'label' => "Merci d'accepter les termes et conditions",
+            ))
             ->add('submit', SubmitType::class, [
                 'label' => "C'est parti !",
+                'attr' => [
+                    'class' => 'btn-success custom-btn rounded-pill'
+                ]
             ])
         ;
     }
