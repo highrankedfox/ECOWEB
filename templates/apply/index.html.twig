@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+{% block title %}Devenir formateur{% endblock %}
+{% block content %}
+    <div class="blockcontainer text-center">
+        <h1>Devenir formateur</h1>
+        <br>
+            <p>
+                Chez EcoWeb, nous accordons une attention particulière au choix de nos formateurs.
+                Vous souhaitez partager vos connaissances dans le domaine ? Décrivez-nous vos spécialités afin que l'on se connaisse mieux.
+            </p>
+        <hr>
+        {{ form(form) }}
+        Souhaitez-vous plutôt <a href="">devenir apprenant</a> ?
+    </div>
+{% endblock %}
