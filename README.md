@@ -1,6 +1,7 @@
 # EcoWeb
 
 EcoWeb est une plateforme d'apprentissage en ligne permettant de suivre des formations pour un développement éco-responsable.
+C'est la plateforme développée par l'organisation EcoIT.
 
 ## Technologies
 
