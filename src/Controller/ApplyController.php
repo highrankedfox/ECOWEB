@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\User;
+use App\Form\ApplicationType;
 use App\Form\RegisterType;
 use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -20,7 +21,7 @@ class ApplyController extends AbstractController
     {
         $user = new User();
 
-        $form = $this->createForm(RegisterType::class, $user);
+        $form = $this->createForm(ApplicationType::class, $user);
 
         $form->handleRequest($request);
 
@@ -28,7 +29,7 @@ class ApplyController extends AbstractController
             $user = $form->getData();
 
             $user->setIsEnabled(false);
-            $user->setRoles('ROLE_TEACHER');
+            $user->setRoles(array('ROLE_TEACHER'));
 
             $password = $hasher->hashPassword($user, $user->getPassword());
             $user->setPassword($password);
@@ -38,7 +39,7 @@ class ApplyController extends AbstractController
             $em->flush();
         }
 
-        return $this->render('thankyou/index.html.twig', [
+        return $this->render('apply/index.html.twig', [
             'form' => $form->createView()
         ]);
     }

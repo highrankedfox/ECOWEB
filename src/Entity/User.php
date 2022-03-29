@@ -40,7 +40,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     private $lastname;
 
     #[ORM\Column(type: 'string', length: 255, nullable: true)]
-    private $profilepic;
+    private $image;
 
     public function getId(): ?int
     {
@@ -172,14 +172,14 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
-    public function getProfilepic(): ?string
+    public function getImage(): ?string
     {
-        return $this->profilepic;
+        return $this->image;
     }
 
-    public function setProfilepic(?string $profilepic): self
+    public function setImage(?string $image): self
     {
-        $this->profilepic = $profilepic;
+        $this->image = $image;
 
         return $this;
     }
