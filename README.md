@@ -6,7 +6,7 @@ C'est la plateforme développée par l'organisation EcoIT.
 ## Technologies
 
 **Front:** HTML5, CSS3, JavaScript, Bootstrap 5
-**Back:** MariaDB, PHP8, Symfony 6 avec CLI et Composer
+**Back:** MariaDB, PHP8, Symfony 6 avec CLI et Composer, EasyAdmin
 
 
 ## Local
