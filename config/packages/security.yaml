@@ -31,6 +31,8 @@ security:
                 always_remember_me: false
                 token_provider:
                     doctrine: true
+            pattern: ^/
+            user_checker: App\Security\UserChecker
 
             # activate different ways to authenticate
             # https://symfony.com/doc/current/security.html#the-firewall
