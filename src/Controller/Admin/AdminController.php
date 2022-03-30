@@ -30,11 +30,12 @@ class AdminController extends AbstractDashboardController
     public function configureDashboard(): Dashboard
     {
         return Dashboard::new()
-            ->setTitle('ECOWEB ADMIN');
+            ->setTitle('ECOWEB ADMINISTRATION');
     }
 
     public function configureMenuItems(): iterable
     {
         yield MenuItem::linkToCrud('Formateurs', 'fas fa-user', UserCrudController::getEntityFqcn());
+        yield MenuItem::linktoRoute('Retour au site', 'fas fa-home', 'home');
     }
 }
