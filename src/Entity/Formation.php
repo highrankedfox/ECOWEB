@@ -22,6 +22,10 @@ class Formation
     #[ORM\Column(type: 'string', length: 255)]
     private $image;
 
+    #[ORM\ManyToOne(targetEntity: User::class, inversedBy: 'formations')]
+    #[ORM\JoinColumn(nullable: false)]
+    private $user;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -59,6 +63,18 @@ class Formation
     public function setImage(string $image): self
     {
         $this->image = $image;
+
+        return $this;
+    }
+
+    public function getUser(): ?User
+    {
+        return $this->user;
+    }
+
+    public function setUser(?User $user): self
+    {
+        $this->user = $user;
 
         return $this;
     }
