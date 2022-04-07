@@ -21,45 +21,23 @@ class TeacherController extends AbstractController
     public function __construct(private ManagerRegistry $doctrine) {}
 
     #[Route('/espaceformateur/ajouter-une-formation', name: 'app_teacher_add')]
-    public function add(Request $request, Formation $formation): Response
+    public function add(Request $request): Response
     {
+        $formation = new Formation();
+        $formation->setUser($this->getUser());
+
         $form = $this->createForm(FormationType::class, $formation);
 
         $form->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid()) {
+        if($form->isSubmitted() && $form->isValid()) {
             $formation->setUser($this->getUser());
+
             $em = $this->doctrine->getManager();
             $em->persist($formation);
             $em->flush();
-            return $this->redirectToRoute('app_teacher');
         }
-
-        return $this->render('', [
-            'form' => $form->createView()
-        ]);
-    }
-
-    #[Route('/espaceformateur/modifier-une-formation/{id}', name: 'app_teacher_change')]
-    public function edit(Request $request, $id): Response
-    {
-        $formation = $this->doctrine->getRepository(Formation::class)->findOneBy($id);
-
-        if (!$formation || $formation->getUser() != $this->getUser()) {
-            return $this->redirectToRoute('app_teacher');
-        }
-
-        $form = $this->createForm(FormationType::class, $formation);
-
-        $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid()) {
-            $em = $this->doctrine->getManager();
-            $em->flush();
-            return $this->redirectToRoute('app_teacher');
-        }
-
-        return $this->render('', [
+        return $this->render('teacher/add.html.twig', [
             'form' => $form->createView()
         ]);
     }

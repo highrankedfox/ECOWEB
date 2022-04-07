@@ -4,12 +4,16 @@ namespace App\Entity;
 
 use App\Repository\FormationRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\HttpFoundation\File\File;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 #[ORM\Entity(repositoryClass: FormationRepository::class)]
+#[Vich\Uploadable]
 class Formation
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
+
     #[ORM\Column(type: 'integer')]
     private $id;
 
@@ -19,12 +23,18 @@ class Formation
     #[ORM\Column(type: 'string', length: 255)]
     private $description;
 
-    #[ORM\Column(type: 'string', length: 255)]
-    private $image;
+    #[Vich\UploadableField(mapping: 'formationimg', fileNameProperty: 'imageName')]
+    private ?File $imageFile = null;
+
+    #[ORM\Column(type: 'string')]
+    private ?string $imageName = null;
+
+    #[ORM\Column(type: 'datetime')]
+    private ?\DateTimeInterface $updatedAt = null;
 
     #[ORM\ManyToOne(targetEntity: User::class, inversedBy: 'formations')]
     #[ORM\JoinColumn(nullable: false)]
-    private $user;
+    private $User;
 
     public function getId(): ?int
     {
@@ -55,26 +65,40 @@ class Formation
         return $this;
     }
 
-    public function getImage(): ?string
+    public function setImageFile(?File $imageFile = null): void
     {
-        return $this->image;
+        $this->imageFile = $imageFile;
+
+        if (null !== $imageFile) {
+            // It is required that at least one field changes if you are using doctrine
+            // otherwise the event listeners won't be called and the file is lost
+            $this->updatedAt = new \DateTimeImmutable();
+        }
     }
 
-    public function setImage(string $image): self
+    public function getImageFile(): ?File
     {
-        $this->image = $image;
+        return $this->imageFile;
+    }
 
-        return $this;
+    public function setImageName(?string $imageName): void
+    {
+        $this->imageName = $imageName;
+    }
+
+    public function getImageName(): ?string
+    {
+        return $this->imageName;
     }
 
     public function getUser(): ?User
     {
-        return $this->user;
+        return $this->User;
     }
 
-    public function setUser(?User $user): self
+    public function setUser(?User $User): self
     {
-        $this->user = $user;
+        $this->User = $User;
 
         return $this;
     }
