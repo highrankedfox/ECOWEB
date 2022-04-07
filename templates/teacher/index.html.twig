@@ -10,7 +10,7 @@
         </p>
             <h2>Mes formations</h2> <a class="d-flex align-items-center small btn btn-success custom-btn rounded-pill px-3 mb-2 mb-lg-0" href="#" role="button"><i class="bi bi-plus-circle-fill me-2"></i> nouvelle formation</a>
             {% if app.user.formations|length == 0 %}
-                <p class="text-center">Vous n'avez pas encore ajouté de formations, pour commencer cliquez <a href="{{ path('app_formations_add') }}">ici</a>.</p>
+                <p class="text-center">Vous n'avez pas encore ajouté de formations, pour commencer cliquez <a href="{{ path('app_teacher_add') }}">ici</a>.</p>
             {% else %}
                 <div class="row">
                     {% for formation in app.user.formations %}
