@@ -8,12 +8,15 @@
 .btn-success.custom-btn {
     background-color: #78c2a4;
     border-color: #78c2a4;
+    color: white;
+    font-family: 'Fredoka', sans-serif;
 }
 
 .btn-success.custom-btn:hover {
     background-color: #e3a76f;
     border-color: #e3a76f;
     transition: 0.3s ease-in;
+    color: white;
 }
 
 .bandeau {
@@ -45,5 +48,9 @@
 }
 
 .blockcontainer h1 {
+    font-family: 'Fredoka', sans-serif;
+}
+
+.blockcontainer h2 {
     font-family: 'Fredoka', sans-serif;
 }
