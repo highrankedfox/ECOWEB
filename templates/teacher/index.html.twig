@@ -21,7 +21,7 @@
                                 <div class="card-body">
                                     <h5 class="card-title">{{ formation.title }}</h5>
                                     <p class="card-text">{{ formation.description }}</p>
-                                    <a class="small btn btn-success custom-btn rounded-pill px-3" href="" role="button">modifier</a>
+                                    <a class="small btn btn-success custom-btn rounded-pill px-3" href="{{path('app_teacher_edit', {'id' : formation.id })}}" role="button">modifier</a>
                                 </div>
                             </div>
                     </div>

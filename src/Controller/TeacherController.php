@@ -36,6 +36,30 @@ class TeacherController extends AbstractController
             $em = $this->doctrine->getManager();
             $em->persist($formation);
             $em->flush();
+            return $this->redirectToRoute('app_teacher');
+        }
+        return $this->render('teacher/add.html.twig', [
+            'form' => $form->createView()
+        ]);
+    }
+
+    #[Route('/espaceformateur/editer-une-formation/{id}', name: 'app_teacher_edit')]
+    public function edit(Request $request, $id): Response
+    {
+        $formation = $this->doctrine->getRepository(Formation::class)->findOneById($id);
+
+        if (!$formation || $formation->getUser() != $this->getUser()) {
+            return $this->redirectToRoute('app_teacher');
+        }
+
+        $form = $this->createForm(FormationType::class, $formation);
+
+        $form->handleRequest($request);
+
+        if($form->isSubmitted() && $form->isValid()) {
+            $em = $this->doctrine->getManager();
+            $em->flush();
+            return $this->redirectToRoute('app_teacher');
         }
         return $this->render('teacher/add.html.twig', [
             'form' => $form->createView()
