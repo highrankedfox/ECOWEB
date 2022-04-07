@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+{% block title %}{{ formation.title }}{% endblock %}
+{% block content %}
+    <div class="blockcontainer text-center">
+        <h1>{{ formation.title }}</h1>
+            {{ formation.description }}
+        <br>
+        <a class="small btn btn-success custom-btn rounded-pill px-3" href="{{path('app_teacher_edit', {'id' : formation.id })}}" role="button">modifier les infos de la formation</a> <a class="small btn btn-success custom-btn rounded-pill px-3" href="{{path('app_teacher_section', {'id' : formation.id })}}" role="button">nouvelle section</a> <a class="small btn btn-success custom-btn rounded-pill px-3" href="" role="button">nouvelle leçon</a>
+        <hr>
+        {% if formation.sections|length == 0 %}
+        <p class="text-center">Vous n'avez pas encore ajouté de sections.</p>
+        {% else %}
+        <table class="table">
+            {% for section in formation.sections %}
+                <thead class="table-success">
+                    <tr>
+                        <th scope="col">{{ section.name }}</th>
+                    </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>Nom de la leçon</td>
+                </tr>
+                </tbody>
+            {% endfor %}
+        </table>
+        {% endif %}
+    </div>
+{% endblock %}

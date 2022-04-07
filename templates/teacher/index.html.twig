@@ -9,6 +9,7 @@
             <br>
             <a class="small btn btn-success custom-btn rounded-pill px-3" href="{{path('app_teacher_add')}}" role="button"><i class="bi bi-plus-circle-fill me-2"></i> nouvelle formation</a>
         </p>
+        <hr>
         <h2>Mes formations</h2>
         {% if app.user.formations|length == 0 %}
             <p class="text-center">Vous n'avez pas encore ajouté de formation.</p>
@@ -21,7 +22,7 @@
                                 <div class="card-body">
                                     <h5 class="card-title">{{ formation.title }}</h5>
                                     <p class="card-text">{{ formation.description }}</p>
-                                    <a class="small btn btn-success custom-btn rounded-pill px-3" href="{{path('app_teacher_edit', {'id' : formation.id })}}" role="button">modifier</a>
+                                    <a class="small btn btn-success custom-btn rounded-pill px-3" href="{{path('app_teacher_display', {'id' : formation.id })}}" role="button">voir</a>
                                 </div>
                             </div>
                     </div>

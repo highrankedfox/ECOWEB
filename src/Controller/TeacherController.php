@@ -3,7 +3,9 @@
 namespace App\Controller;
 
 use App\Entity\Formation;
+use App\Entity\Section;
 use App\Form\FormationType;
+use App\Form\SectionType;
 use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -24,7 +26,6 @@ class TeacherController extends AbstractController
     public function add(Request $request): Response
     {
         $formation = new Formation();
-        $formation->setUser($this->getUser());
 
         $form = $this->createForm(FormationType::class, $formation);
 
@@ -43,6 +44,17 @@ class TeacherController extends AbstractController
         ]);
     }
 
+    #[Route('/espaceformateur/consulter/{id}', name: 'app_teacher_display')]
+    public function display($id): Response
+    {
+        $formation = $this->doctrine->getRepository(Formation::class)->findOneById($id);
+        $section  = $this->doctrine->getRepository(Section::class)->findAll();
+        return $this->render('teacher/display.html.twig', [
+            'formation' => $formation,
+            'sections' => $section,
+        ]);
+    }
+
     #[Route('/espaceformateur/editer-une-formation/{id}', name: 'app_teacher_edit')]
     public function edit(Request $request, $id): Response
     {
@@ -58,6 +70,27 @@ class TeacherController extends AbstractController
 
         if($form->isSubmitted() && $form->isValid()) {
             $em = $this->doctrine->getManager();
+            $em->flush();
+            return $this->redirectToRoute('app_teacher');
+        }
+        return $this->render('teacher/add.html.twig', [
+            'form' => $form->createView()
+        ]);
+    }
+
+    #[Route('/espaceformateur/{id}/nouvelle-section', name: 'app_teacher_section')]
+    public function section(Request $request, $id): Response
+    {
+        $section = new Section();
+
+        $form = $this->createForm(SectionType::class, $section);
+
+        $form->handleRequest($request);
+
+        if($form->isSubmitted() && $form->isValid()) {
+            $section->setFormation($this->doctrine->getRepository(Formation::class)->findOneById($id));
+            $em = $this->doctrine->getManager();
+            $em->persist($section);
             $em->flush();
             return $this->redirectToRoute('app_teacher');
         }
