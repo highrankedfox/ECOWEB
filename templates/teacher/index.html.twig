@@ -13,11 +13,11 @@
         {% if app.user.formations|length == 0 %}
             <p class="text-center">Vous n'avez pas encore ajouté de formation.</p>
         {% else %}
-            {% for formation in app.user.formations %}
                 <div class="row">
+                    {% for formation in app.user.formations %}
                     <div class="col-md-4">
                             <div class="card" style="width: 18rem;">
-                                <img class="card-img-top" src="/public/uploads/formationimg/pexels-luis-gomes-546819-624ecea3d53c3626114360.jpg" alt="images">
+                                <img class="card-img-top" src="{{ vich_uploader_asset(formation, 'imageFile') }}" alt="{{ formation.imageName }}">
                                 <div class="card-body">
                                     <h5 class="card-title">{{ formation.title }}</h5>
                                     <p class="card-text">{{ formation.description }}</p>
@@ -25,8 +25,8 @@
                                 </div>
                             </div>
                     </div>
+                    {% endfor %}
                 </div>
-            {% endfor %}
         {% endif %}
     </div>
 {% endblock %}
