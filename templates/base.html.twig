@@ -55,7 +55,21 @@
 {% block content %}{% endblock %}
 
 <!-- Footer-->
-<footer class="bandeau text-center py-4">
+{% if block("homepage") is defined %}
+    <footer class="bandeau text-center py-4 footer-home">
+        <div class="container px-5">
+            <div class="text-white-50 small">
+                <div class="mb-2">&copy; EcoWeb 2021. Tous droits réservés. EcoWeb est une plateforme de l'organisation EcoIT.</div>
+                <a href="#!">Confidentialité</a>
+                <span class="mx-1">&middot;</span>
+                <a href="#!">Termes</a>
+                <span class="mx-1">&middot;</span>
+                <a href="#!">A propos</a>
+            </div>
+        </div>
+    </footer>
+{% else %}
+<footer class="bandeau text-center py-4 footer-custom">
     <div class="container px-5">
         <div class="text-white-50 small">
             <div class="mb-2">&copy; EcoWeb 2021. Tous droits réservés. EcoWeb est une plateforme de l'organisation EcoIT.</div>
@@ -67,6 +81,7 @@
         </div>
     </div>
 </footer>
+{% endif %}
 <!-- Bootstrap core JS-->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 <!-- Core theme JS-->

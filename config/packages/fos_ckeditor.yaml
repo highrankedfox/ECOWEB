@@ -11,7 +11,3 @@ fos_ck_editor:
         filebrowsers:
             - VideoBrowse
             - VideoUpload
-        toolbars:
-            items:
-                full.colors: [ "TextColor", "BGColor" ]
-                full.document: [ "Source", "-", "Preview", "Print" ]

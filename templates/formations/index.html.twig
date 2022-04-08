@@ -4,10 +4,10 @@
     <div class="blockcontainer text-center">
         <h1>Nos formations</h1>
         <br>
-            <div class="row">
+            <div class="row justify-content-md-center">
                 {% for formation in formations %}
-                    <div class="col-md-4">
-                        <div class="card" style="width: 18rem;">
+                    <div class="col-md-2">
+                        <div class="card">
                             <img class="card-img-top" src="{{ vich_uploader_asset(formation, 'imageFile') }}" alt="{{ formation.imageName }}">
                             <div class="card-body">
                                 <h5 class="card-title">{{ formation.title }}</h5>
