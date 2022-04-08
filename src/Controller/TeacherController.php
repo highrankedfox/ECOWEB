@@ -3,8 +3,10 @@
 namespace App\Controller;
 
 use App\Entity\Formation;
+use App\Entity\Lesson;
 use App\Entity\Section;
 use App\Form\FormationType;
+use App\Form\LessonType;
 use App\Form\SectionType;
 use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -49,9 +51,11 @@ class TeacherController extends AbstractController
     {
         $formation = $this->doctrine->getRepository(Formation::class)->findOneById($id);
         $section  = $this->doctrine->getRepository(Section::class)->findAll();
+        $lesson = $this->doctrine->getRepository(Lesson::class)->findAll();
         return $this->render('teacher/display.html.twig', [
             'formation' => $formation,
             'sections' => $section,
+            'lessons' => $lesson,
         ]);
     }
 
@@ -94,7 +98,67 @@ class TeacherController extends AbstractController
             $em->flush();
             return $this->redirectToRoute('app_teacher');
         }
-        return $this->render('teacher/add.html.twig', [
+        return $this->render('teacher/section.html.twig', [
+            'form' => $form->createView()
+        ]);
+    }
+
+    #[Route('/espaceformateur/editer-une-section/{id}', name: 'app_teacher_section_edit')]
+    public function editSection(Request $request, $id): Response
+    {
+        $section = $this->doctrine->getRepository(Section::class)->findOneById($id);
+
+        $form = $this->createForm(SectionType::class, $section);
+
+        $form->handleRequest($request);
+
+        if($form->isSubmitted() && $form->isValid()) {
+            $em = $this->doctrine->getManager();
+            $em->flush();
+            return $this->redirectToRoute('app_teacher');
+        }
+        return $this->render('teacher/section.html.twig', [
+            'form' => $form->createView()
+        ]);
+    }
+
+    #[Route('/espaceformateur/{id}/nouvelle-lecon', name: 'app_teacher_lesson')]
+    public function lesson(Request $request, $id): Response
+    {
+        $lesson = new Lesson();
+
+        $form = $this->createForm(LessonType::class, $lesson);
+
+        $form->handleRequest($request);
+
+        if($form->isSubmitted() && $form->isValid()) {
+            $lesson->setSection($this->doctrine->getRepository(Section::class)->findOneById($id));
+
+            $em = $this->doctrine->getManager();
+            $em->persist($lesson);
+            $em->flush();
+            return $this->redirectToRoute('app_teacher');
+        }
+        return $this->render('teacher/lesson.html.twig', [
+            'form' => $form->createView()
+        ]);
+    }
+
+    #[Route('/espaceformateur/editer-une-lecon/{id}', name: 'app_teacher_lesson_edit')]
+    public function editLesson(Request $request, $id): Response
+    {
+        $lesson = $this->doctrine->getRepository(Lesson::class)->findOneById($id);
+
+        $form = $this->createForm(LessonType::class, $lesson);
+
+        $form->handleRequest($request);
+
+        if($form->isSubmitted() && $form->isValid()) {
+            $em = $this->doctrine->getManager();
+            $em->flush();
+            return $this->redirectToRoute('app_teacher');
+        }
+        return $this->render('teacher/section.html.twig', [
             'form' => $form->createView()
         ]);
     }

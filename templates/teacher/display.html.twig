@@ -5,7 +5,9 @@
         <h1>{{ formation.title }}</h1>
             {{ formation.description }}
         <br>
-        <a class="small btn btn-success custom-btn rounded-pill px-3" href="{{path('app_teacher_edit', {'id' : formation.id })}}" role="button">modifier les infos de la formation</a> <a class="small btn btn-success custom-btn rounded-pill px-3" href="{{path('app_teacher_section', {'id' : formation.id })}}" role="button">nouvelle section</a> <a class="small btn btn-success custom-btn rounded-pill px-3" href="" role="button">nouvelle leçon</a>
+        <a class="small btn btn-success custom-btn rounded-pill px-3 mb-1" href="{{path('app_teacher_edit', {'id' : formation.id })}}" role="button">modifier les infos de la formation</a>
+        <br>
+        <a class="small btn btn-success custom-btn rounded-pill px-3" href="{{path('app_teacher_section', {'id' : formation.id })}}" role="button">nouvelle section</a>
         <hr>
         {% if formation.sections|length == 0 %}
         <p class="text-center">Vous n'avez pas encore ajouté de sections.</p>
@@ -14,12 +16,17 @@
             {% for section in formation.sections %}
                 <thead class="table-success">
                     <tr>
-                        <th scope="col">{{ section.name }}</th>
+                        <th scope="col">{{ section.name }} | <a href="{{path('app_teacher_section_edit', {'id' : section.id })}}">modifier</a></th>
                     </tr>
                 </thead>
                 <tbody>
+                {% for lesson in section.lessons %}
                 <tr>
-                    <td>Nom de la leçon</td>
+                    <td>{{ lesson.title }} | <a href="">voir</a> | <a href="{{path('app_teacher_lesson_edit', {'id' : lesson.id })}}">modifier</a></td>
+                </tr>
+                {% endfor %}
+                <tr>
+                    <td><a class="small btn btn-success custom-btn rounded-pill px-3" href="{{path('app_teacher_lesson', {'id' : section.id })}}" role="button">ajouter une leçon</a></td>
                 </tr>
                 </tbody>
             {% endfor %}

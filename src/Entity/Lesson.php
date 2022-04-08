@@ -20,6 +20,9 @@ class Lesson
     #[ORM\JoinColumn(nullable: false)]
     private $Section;
 
+    #[ORM\Column(type: 'text')]
+    private $content;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -45,6 +48,18 @@ class Lesson
     public function setSection(?Section $Section): self
     {
         $this->Section = $Section;
+
+        return $this;
+    }
+
+    public function getContent(): ?string
+    {
+        return $this->content;
+    }
+
+    public function setContent(string $content): self
+    {
+        $this->content = $content;
 
         return $this;
     }
