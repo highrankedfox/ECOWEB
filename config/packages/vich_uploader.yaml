@@ -4,10 +4,10 @@ vich_uploader:
         type: attribute
     mappings:
         profilepics:
-            uri_prefix: '/profilepics'
+            uri_prefix: '/uploads/profilepics'
             upload_destination: '%kernel.project_dir%/public/%profilepics%'
             namer: Vich\UploaderBundle\Naming\SmartUniqueNamer
         formationimg:
-            uri_prefix: '/formationimg'
+            uri_prefix: '/uploads/formationimg'
             upload_destination: '%kernel.project_dir%/public/%formationimg%'
             namer: Vich\UploaderBundle\Naming\SmartUniqueNamer

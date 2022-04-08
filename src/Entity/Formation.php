@@ -47,6 +47,7 @@ class Formation
     public function __construct()
     {
         $this->sections = new ArrayCollection();
+        $this->setCreatedAt(new \DateTimeImmutable());
     }
 
     public function getId(): ?int

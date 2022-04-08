@@ -33,6 +33,9 @@ class FormationType extends AbstractType
             ])
             ->add('imageFile', VichImageType::class, [
                 'label' => 'Illustration',
+                'allow_delete' => false,
+                'download_link' => true,
+                'image_uri'         => false,
                 'constraints' => new File([
                     'maxSize'       => '4M',
                     'mimeTypes'      => ['image/jpeg', 'image/png'],

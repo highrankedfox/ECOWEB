@@ -73,3 +73,33 @@
     width: 100%;
     height: 100px;
 }
+
+.card {
+    margin: 0 auto; /* Added */
+    float: none; /* Added */
+    margin-bottom: 10px; /* Added */
+}
+
+@media screen and (max-width: 780px) {
+    .footer-custom  {
+        position: relative;
+        bottom: 0;
+        width: 100%;
+        height: 85px;
+        font-size: 13px;
+    }
+    .blockcontainer {
+        padding: 7rem 2rem 0 2rem;
+        font-size: 14px;
+    }
+    .navbar-brand {
+        width: 100px;
+    }
+    .navbar-brand img {
+        width: 150px;
+    }
+    *{
+        padding: 0;
+        margin: 0;
+    }
+}

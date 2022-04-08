@@ -16,7 +16,7 @@
         {% else %}
                 <div class="row justify-content-md-center">
                     {% for formation in app.user.formations %}
-                    <div class="col-md-2">
+                        <div class="col-xl-2">
                             <div class="card">
                                 <img class="card-img-top" src="{{ vich_uploader_asset(formation, 'imageFile') }}" alt="{{ formation.imageName }}">
                                 <div class="card-body">
