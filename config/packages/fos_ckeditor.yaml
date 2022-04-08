@@ -6,8 +6,11 @@ twig:
 fos_ck_editor:
     configs:
         my_config:
-            toolbar: full
             language: fr
+            toolbars:
+                items:
+                    utilities: [ 'Source', '-', 'Maximize', 'SelectAll', 'SelectAll' ]
+                    design: [ 'FontSize', 'Bold', 'Italic', 'Underline', 'Strike', 'Subscript', 'Superscript', '-', 'NumberedList', 'BulletedList', '-', 'Blockquote', 'CreateDiv', '-', 'JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock', '-', 'Link', 'Unlink', 'Anchor', '-', 'Table', 'HorizontalRule', 'PageBreak', '-', 'Iframe' ]
         filebrowsers:
             - VideoBrowse
             - VideoUpload

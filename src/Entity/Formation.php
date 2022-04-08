@@ -41,6 +41,9 @@ class Formation
     #[ORM\OneToMany(mappedBy: 'Formation', targetEntity: Section::class, orphanRemoval: true)]
     private $sections;
 
+    #[ORM\Column(type: 'datetime_immutable')]
+    private $createdAt;
+
     public function __construct()
     {
         $this->sections = new ArrayCollection();
@@ -139,6 +142,18 @@ class Formation
                 $section->setFormation(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getCreatedAt(): ?\DateTimeImmutable
+    {
+        return $this->createdAt;
+    }
+
+    public function setCreatedAt(\DateTimeImmutable $createdAt): self
+    {
+        $this->createdAt = $createdAt;
 
         return $this;
     }
