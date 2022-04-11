@@ -23,6 +23,9 @@ class Lesson
     #[ORM\Column(type: 'text')]
     private $content;
 
+    #[ORM\Column(type: 'string', length: 255)]
+    private $video;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -60,6 +63,18 @@ class Lesson
     public function setContent(string $content): self
     {
         $this->content = $content;
+
+        return $this;
+    }
+
+    public function getVideo(): ?string
+    {
+        return $this->video;
+    }
+
+    public function setVideo(string $video): self
+    {
+        $this->video = $video;
 
         return $this;
     }

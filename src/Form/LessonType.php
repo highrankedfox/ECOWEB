@@ -13,6 +13,7 @@ use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\UrlType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints\Length;
@@ -27,6 +28,13 @@ class LessonType extends AbstractType
                 'label' => 'Titre',
                 'attr' => [
                     'placeholder' => 'Indiquez le titre de la leçon'
+                ]
+            ])
+            ->add('video', UrlType::class, [
+                'constraints' => new Length(['min' => 5, 'max' => 30]),
+                'label' => 'URL de la vidéo',
+                'attr' => [
+                    'placeholder' => 'Entrez le lien de la vidéo correspondant au cours'
                 ]
             ])
             ->add('content', CKEditorType::class, [

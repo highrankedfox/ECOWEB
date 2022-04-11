@@ -96,7 +96,7 @@ class TeacherController extends AbstractController
             $em = $this->doctrine->getManager();
             $em->persist($section);
             $em->flush();
-            return $this->redirectToRoute('app_teacher');
+            return $this->redirectToRoute('app_teacher_display', ['id' => $formation->getId()]);
         }
         return $this->render('teacher/section.html.twig', [
             'form' => $form->createView()
