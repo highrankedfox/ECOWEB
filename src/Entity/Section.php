@@ -25,6 +25,10 @@ class Section
     #[ORM\JoinColumn(nullable: false)]
     private $Formation;
 
+    #[ORM\ManyToOne(targetEntity: User::class, inversedBy: 'sections')]
+    #[ORM\JoinColumn(nullable: false)]
+    private $User;
+
     public function __construct()
     {
         $this->lessons = new ArrayCollection();
@@ -90,6 +94,18 @@ class Section
     public function setFormation(?Formation $Formation): self
     {
         $this->Formation = $Formation;
+
+        return $this;
+    }
+
+    public function getUser(): ?User
+    {
+        return $this->User;
+    }
+
+    public function setUser(?User $User): self
+    {
+        $this->User = $User;
 
         return $this;
     }

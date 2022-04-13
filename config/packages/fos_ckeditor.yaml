@@ -7,10 +7,6 @@ fos_ck_editor:
     configs:
         my_config:
             language: fr
-            toolbars:
-                items:
-                    utilities: [ 'Source', '-', 'Maximize', 'SelectAll', 'SelectAll' ]
-                    design: [ 'FontSize', 'Bold', 'Italic', 'Underline', 'Strike', 'Subscript', 'Superscript', '-', 'NumberedList', 'BulletedList', '-', 'Blockquote', 'CreateDiv', '-', 'JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock', '-', 'Link', 'Unlink', 'Anchor', '-', 'Table', 'HorizontalRule', 'PageBreak', '-', 'Iframe' ]
-        filebrowsers:
-            - VideoBrowse
-            - VideoUpload
+            toolbar:
+                - { name: "utilities", items: ['Source', '-', 'Maximize', 'SelectAll', 'SelectAll']}
+                - { name: "design", items: [ 'FontSize', 'Bold', 'Italic', 'Underline', 'Strike', 'Subscript', 'Superscript', '-', 'NumberedList', 'BulletedList', '-', 'Blockquote', 'CreateDiv', '-', 'JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock', '-', 'Link', 'Unlink', 'Anchor', '-', 'Table', 'HorizontalRule', 'PageBreak', '-', 'Iframe' ]}

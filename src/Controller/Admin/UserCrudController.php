@@ -34,7 +34,7 @@ class UserCrudController extends AbstractCrudController
     public function createIndexQueryBuilder(SearchDto $searchDto, EntityDto $entityDto, FieldCollection $fields, \EasyCorp\Bundle\EasyAdminBundle\Collection\FilterCollection $filters): \Doctrine\ORM\QueryBuilder
     {
         $qb = parent::createIndexQueryBuilder($searchDto, $entityDto, $fields, $filters);
-        $qb->where("entity.roles LIKE '%%ROLE_TEACHER%%'");
+        $qb->where("entity.roles LIKE '%ROLE_TEACHER%%'");
         return $qb;
     }
 

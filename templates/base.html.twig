@@ -32,9 +32,6 @@
                 <li class="nav-item"><a class="nav-link me-lg-3" href="{{ path('app_about') }}">A propos</a></li>
                 <li class="nav-item"><a class="nav-link me-lg-3" href="{{ path('app_formations') }}">Formations</a></li>
                 {% if is_granted('ROLE_TEACHER') %}
-                    <li class="nav-item"><a class="nav-link me-lg-3" href="{{ path('app_teacher') }}">Espace formateur</a></li>
-                {% endif %}
-                {% if is_granted('ROLE_ADMIN') %}
                     <li class="nav-item"><a class="nav-link me-lg-3" href="{{ path('admin') }}">Administration</a></li>
                 {% endif %}
                 {% if app.user %}

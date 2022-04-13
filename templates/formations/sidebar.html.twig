@@ -1,0 +1,29 @@
+<!-- Sidear for lesson pages -->
+
+<nav class="flex-shrink-0flex-shrink-0 p-3 bg-white sidenav">
+    <button class="btn btn-success" id="sidenav-btn" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarCollapse" aria-expanded="false" aria-controls="collapseOne">
+        Sommaire
+    </button>
+    <div class="list-unstyled ps-0 ul-custom navbar-collapse collapse show" id="sidebarCollapse" aria-expanded="true">
+        <li class="mb-1">
+            {% for section in formation.sections %}
+                <ul class="list-unstyled align-items-center rounded fw-normal">
+                    <li>{{ section.name }}</li>
+                </ul>
+                <div>
+                    {% for lesson in formation.sections.lesson %}
+                        <ul class="list-unstyled fw-normal pb-1 small">
+                            <li><a href="{{ path('app_formations_lesson',  {'formation':formation.id, 'section': section.id, 'id':lesson.id}) }}" class="link-dark rounded">{{ lesson.title }}</a></li>
+                        </ul>
+                    {% endfor %}
+                </div>
+            {% endfor %}
+        </li>
+        <li class="border-top my-3"></li>
+        <li class="mb-1">
+            <ul class="list-unstyled fw-normal pb-1 small">
+                <li><a href="{{path('app_formations')}}" class="link-dark rounded">retour à la liste des formations</a></li>
+            </ul>
+        </li>
+    </div>
+</nav>

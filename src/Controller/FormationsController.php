@@ -23,6 +23,20 @@ class FormationsController extends AbstractController
     ]);
     }
 
+    #[Route('/formations/consulter-{formation}-{section}-{id}', name: 'app_formations_lesson')]
+    public function seeLesson($formation, $id): Response
+    {
+        $formation = $this->doctrine->getRepository(Formation::class)->findOneById($formation);
+        $section  = $this->doctrine->getRepository(Section::class)->findAll();
+        $lesson = $this->doctrine->getRepository(Lesson::class)->findOneById($id);
+        dd($formation);
+        return $this->render('formations/lesson.html.twig', [
+            'lesson' => $lesson,
+            'formation' => $formation,
+            'sections' => $section
+        ]);
+    }
+
     #[Route('/formations/consulter-{id}', name: 'app_formations_see')]
     public function see($id): Response
     {
@@ -32,7 +46,7 @@ class FormationsController extends AbstractController
         return $this->render('formations/formation.html.twig', [
             'formation' => $formation,
             'sections' => $section,
-            'lessons' => $lesson
+            'lesson' => $lesson
         ]);
     }
 }

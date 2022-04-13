@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+{% block title %}titre de la leçon{% endblock %}
+{% block content %}
+    <div class="formationcontainer text-center">
+        {% block sidebar %}
+            {% include "./formations/sidebar.html.twig" %}
+        {% endblock %}
+
+        <h1>Nom de la leçon</h1>
+        <hr>
+        <h2>Vidéo</h2>
+        <h2>Contenu</h2>
+    </div>
+{% endblock %}

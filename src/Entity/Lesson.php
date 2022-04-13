@@ -26,6 +26,10 @@ class Lesson
     #[ORM\Column(type: 'string', length: 255)]
     private $video;
 
+    #[ORM\ManyToOne(targetEntity: User::class, inversedBy: 'lessons')]
+    #[ORM\JoinColumn(nullable: false)]
+    private $User;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -75,6 +79,18 @@ class Lesson
     public function setVideo(string $video): self
     {
         $this->video = $video;
+
+        return $this;
+    }
+
+    public function getUser(): ?User
+    {
+        return $this->User;
+    }
+
+    public function setUser(?User $User): self
+    {
+        $this->User = $User;
 
         return $this;
     }
