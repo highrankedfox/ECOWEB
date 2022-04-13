@@ -6,14 +6,14 @@
     </button>
     <div class="list-unstyled ps-0 ul-custom navbar-collapse collapse show" id="sidebarCollapse" aria-expanded="true">
         <li class="mb-1">
-            {% for section in formation.sections %}
+            {% for sections in formation.sections %}
                 <ul class="list-unstyled align-items-center rounded fw-normal">
-                    <li>{{ section.name }}</li>
+                    <li>{{ sections.name }}</li>
                 </ul>
                 <div>
-                    {% for lesson in formation.sections.lesson %}
+                    {% for lessons in sections.lessons %}
                         <ul class="list-unstyled fw-normal pb-1 small">
-                            <li><a href="{{ path('app_formations_lesson',  {'formation':formation.id, 'section': section.id, 'id':lesson.id}) }}" class="link-dark rounded">{{ lesson.title }}</a></li>
+                            <li><a href="{{ path('app_formations_lesson',  {'formation':formation.id, 'section': sections.id, 'id':lessons.id}) }}" class="link-dark rounded">{{ lessons.title }}</a></li>
                         </ul>
                     {% endfor %}
                 </div>

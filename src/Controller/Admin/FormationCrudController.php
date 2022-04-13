@@ -36,17 +36,25 @@ class FormationCrudController extends AbstractCrudController
         return $qb;
     }
 
+    public function createEntity(string $entityFqcn)
+    {
+        $formation = new Formation();
+        $formation->setUser($this->getUser());
+
+        return $formation;
+    }
+
     public function configureFields(string $pageName): iterable
     {
         return [
-            yield TextField::new('title'),
-            yield ImageField::new('imageName', 'Illustration')
+            TextField::new('title'),
+            ImageField::new('imageName', 'Illustration')
                 ->setBasePath($this->getParameter('formationimg'))
                 ->onlyOnIndex(),
-            yield TextField::new('imageFile')->setFormType(VichImageType::class)
+            TextField::new('imageFile')->setFormType(VichImageType::class)
                 ->setFormTypeOption('allow_delete', false)
                 ->onlyOnForms(),
-            yield TextField::new('description'),
+            TextField::new('description'),
         ];
     }
 }

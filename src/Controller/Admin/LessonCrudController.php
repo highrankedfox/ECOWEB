@@ -3,6 +3,7 @@
 namespace App\Controller\Admin;
 
 use App\Entity\Lesson;
+use Doctrine\ORM\QueryBuilder;
 use EasyCorp\Bundle\EasyAdminBundle\Collection\FieldCollection;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
@@ -35,11 +36,22 @@ class LessonCrudController extends AbstractCrudController
         return $qb;
     }
 
+    public function createEntity(string $entityFqcn)
+    {
+        $lesson = new Lesson();
+        $lesson->setUser($this->getUser());
+
+        return $lesson;
+    }
+
     public function configureFields(string $pageName): iterable
     {
         return [
             TextField::new('title'),
-            AssociationField::new('Section')->setCrudController(SectionCrudController::class),
+            AssociationField::new('Section')->setCrudController(SectionCrudController::class)->setQueryBuilder(
+                fn (QueryBuilder $queryBuilder) => $queryBuilder
+                    ->andWhere('entity.User = ' . $this->getUser())
+            ),
             UrlField::new('video'),
             TextEditorField::new('content'),
         ];

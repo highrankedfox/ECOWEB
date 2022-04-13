@@ -47,9 +47,9 @@ class UserCrudController extends AbstractCrudController
         yield ImageField::new('imageName', 'Photo de profil')
             ->setBasePath($this->getParameter('profilepics'))
             ->onlyOnIndex();
-        yield TextareaField::new('imageName')
-            ->setFormType(VichImageType::class)
-            ->hideOnIndex();
+        yield TextField::new('imageFile')->setFormType(VichImageType::class)
+             ->setFormTypeOption('allow_delete', false)
+             ->onlyOnForms();
         yield BooleanField::new('isEnabled', 'Statut validé.e');
     }
 

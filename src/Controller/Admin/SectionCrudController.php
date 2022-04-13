@@ -3,6 +3,7 @@
 namespace App\Controller\Admin;
 
 use App\Entity\Section;
+use Doctrine\ORM\QueryBuilder;
 use EasyCorp\Bundle\EasyAdminBundle\Collection\FieldCollection;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
@@ -34,11 +35,23 @@ class SectionCrudController extends AbstractCrudController
         return $qb;
     }
 
+    public function createEntity($entityFqcn)
+    {
+        $section = new Section();
+        $section->setUser($this->getUser());
+
+        return $section;
+    }
+
     public function configureFields(string $pageName): iterable
     {
         return [
             TextField::new('name'),
-            AssociationField::new('Formation')->setCrudController(FormationCrudController::class),
+            AssociationField::new('Formation')->setCrudController(FormationCrudController::class)
+                ->setQueryBuilder(
+                    fn (QueryBuilder $queryBuilder) => $queryBuilder
+                        ->andWhere('entity.User = ' . $this->getUser())
+                ),
         ];
     }
 }

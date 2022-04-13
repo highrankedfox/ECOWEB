@@ -27,13 +27,12 @@ class FormationsController extends AbstractController
     public function seeLesson($formation, $id): Response
     {
         $formation = $this->doctrine->getRepository(Formation::class)->findOneById($formation);
-        $section  = $this->doctrine->getRepository(Section::class)->findAll();
-        $lesson = $this->doctrine->getRepository(Lesson::class)->findOneById($id);
-        dd($formation);
+        $sections  = $this->doctrine->getRepository(Section::class)->findAll();
+        $lessons = $this->doctrine->getRepository(Lesson::class)->findOneById($id);
         return $this->render('formations/lesson.html.twig', [
-            'lesson' => $lesson,
+            'lessons' => $lessons,
             'formation' => $formation,
-            'sections' => $section
+            'sections' => $sections
         ]);
     }
 
@@ -41,12 +40,12 @@ class FormationsController extends AbstractController
     public function see($id): Response
     {
         $formation = $this->doctrine->getRepository(Formation::class)->findOneById($id);
-        $section  = $this->doctrine->getRepository(Section::class)->findAll();
-        $lesson = $this->doctrine->getRepository(Lesson::class)->findAll();
+        $sections  = $this->doctrine->getRepository(Section::class)->findAll();
+        $lessons = $this->doctrine->getRepository(Lesson::class)->findAll();
         return $this->render('formations/formation.html.twig', [
             'formation' => $formation,
-            'sections' => $section,
-            'lesson' => $lesson
+            'sections' => $sections,
+            'lessons' => $lessons
         ]);
     }
 }
