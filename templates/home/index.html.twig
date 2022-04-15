@@ -11,7 +11,7 @@
                             <h1 class="display-1 lh-1 mb-3">Bienvenue dans une nouvelle ère informatique.</h1>
                             <p class="lead fw-normal text-muted mb-5">Faites vos premiers pas vers un développement éco-responsable avec nos formations !</p>
                             <div class="d-flex flex-column flex-lg-row align-items-center">
-                                <button class="d-flex align-items-center small btn btn-success custom-btn rounded-pill px-3 mb-2 mb-lg-0">C'est parti !</button>
+                                <a class="small btn btn-success custom-btn rounded-pill px-3 mb-2 mb-lg-0" href="{{path('app_formations')}}" role="button">C'est parti !</a>
                             </div>
                         </div>
                     </div>
@@ -95,7 +95,28 @@
                         <br />
                         N'attendez plus !
                     </h2>
-                    <a class="btn btn-outline-light py-3 px-4 rounded-pill" href="https://startbootstrap.com/theme/new-age">Devenir instructeur</a>
+                    <a class="btn btn-outline-light py-3 px-4 rounded-pill" href="{{ path('app_apply') }}">Devenir instructeur</a>
+                </div>
+            </div>
+        </section>
+        <!-- Last posted section-->
+        <section class="latest">
+            <div class="container px-5">
+                <h2 class="text-black text-center display-1 mt-2">Dernières formations</h2>
+                <div class="row">
+                    {% for formation in formations %}
+                        <div class="col-md-4">
+                            <div class="card">
+                                <img class="card-img-top" src="{{ vich_uploader_asset(formation, 'imageFile') }}" alt="{{ formation.imageName }}">
+                                <div class="card-body">
+                                    <h5 class="card-title">{{ formation.title }}</h5>
+                                    <p class="card-text">{{ formation.description }}</p>
+                                    <a class="small btn btn-success custom-btn rounded-pill px-3" href="{{path('app_formations_see', {'id' : formation.id })}}" role="button">voir</a>
+                                    <span class="small">par {{ formation.user.firstname }} {{ formation.user.lastname }}</span>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
                 </div>
             </div>
         </section>

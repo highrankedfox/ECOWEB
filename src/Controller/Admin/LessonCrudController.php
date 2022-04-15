@@ -11,6 +11,7 @@ use EasyCorp\Bundle\EasyAdminBundle\Dto\EntityDto;
 use EasyCorp\Bundle\EasyAdminBundle\Dto\SearchDto;
 use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\ChoiceField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\TextareaField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextEditorField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\UrlField;
@@ -47,13 +48,13 @@ class LessonCrudController extends AbstractCrudController
     public function configureFields(string $pageName): iterable
     {
         return [
-            TextField::new('title'),
+            TextField::new('title', 'Titre de la leçon'),
             AssociationField::new('Section')->setCrudController(SectionCrudController::class)->setQueryBuilder(
                 fn (QueryBuilder $queryBuilder) => $queryBuilder
                     ->andWhere('entity.User = ' . $this->getUser())
             ),
-            UrlField::new('video'),
-            TextEditorField::new('content'),
+            UrlField::new('video', 'Vidéo de la leçon'),
+            TextEditorField::new('content', 'Contenu'),
         ];
     }
 }

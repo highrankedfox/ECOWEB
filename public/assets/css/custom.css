@@ -75,20 +75,9 @@
 }
 
 /* Formation display */
-
-.card {
-    margin: 0 auto; /* Added */
-    margin-bottom: 10px; /* Added */
-}
-
 .card-text {
     height: 50px;
     overflow-y: hidden;
-}
-
-.sidenav {
-    float: left;
-    width: 280px;
 }
 
 .formationcontainer {
@@ -116,9 +105,15 @@
     font-family: 'Fredoka', sans-serif;
 }
 
-.tableau {
-    width: 80%;
-    display: inline-flex;
+.formationcontainer .sidenav {
+    float: left;
+    height: 100%;
+}
+
+.formationcontainer .lesson_content {
+    text-align: justify;
+    width: 90%;
+    float: right;
 }
 
 /* Media queries */

@@ -5,9 +5,11 @@ namespace App\Controller;
 use App\Entity\Formation;
 use App\Entity\Lesson;
 use App\Entity\Section;
+use Doctrine\ORM\Query;
 use Doctrine\Persistence\ManagerRegistry;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 
 class FormationsController extends AbstractController
@@ -22,6 +24,18 @@ class FormationsController extends AbstractController
             'formations' => $formations,
     ]);
     }
+
+    #[Route('/formations/search', name: 'app_formations_search')]
+    public function search(Request $request, Query $query) {
+        $searchTerm = $request->query->get('search');
+        $search = $this->doctrine->getRepository(Formation::class)->searchFormations($searchTerm);
+        $results = $query->getResult($search);
+
+        return $this->renderView('formations/index.html.twig', [
+            'results' => $results
+        ]);
+    }
+
 
     #[Route('/formations/consulter-{formation}-{section}-{id}', name: 'app_formations_lesson')]
     public function seeLesson($formation, $id): Response
