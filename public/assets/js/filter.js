@@ -1,20 +1,7 @@
-$(document).ready(function(){
-    $('#live_search').on('keyup', function(e){
-        var input = $(this).val();
-        var $search = $('#live_search');
-
-        $.ajax({
-            url:        'formations/search',
-            type:       'GET',
-            dataType:   'json',
-            async:      true,
-
-            success: function(response) {
-                $('#search_results').replaceWith(response);
-            },
-            error : function() {
-                alert('Une erreur est survenue');
-            }
-        });
-    });
+$('#live_search').on('keyup', function() {
+    let input = $(this).val();
+    $('.card').hide();
+    $('.card').filter(function() {
+        return new RegExp(input, 'i').test($(this).text())
+    }).show();
 });

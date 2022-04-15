@@ -25,18 +25,6 @@ class FormationsController extends AbstractController
     ]);
     }
 
-    #[Route('/formations/search', name: 'app_formations_search')]
-    public function search(Request $request, Query $query) {
-        $searchTerm = $request->query->get('search');
-        $search = $this->doctrine->getRepository(Formation::class)->searchFormations($searchTerm);
-        $results = $query->getResult($search);
-
-        return $this->renderView('formations/index.html.twig', [
-            'results' => $results
-        ]);
-    }
-
-
     #[Route('/formations/consulter-{formation}-{section}-{id}', name: 'app_formations_lesson')]
     public function seeLesson($formation, $id): Response
     {
