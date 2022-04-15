@@ -1,16 +1,16 @@
 {% extends 'base.html.twig' %}
 {% block title %}{{ lessons.title }}{% endblock %}
-{% block content %}
-    <div class="formationcontainer text-center">
-        {% block sidebar %}
-            {% include "./formations/sidebar.html.twig" %}
-        {% endblock %}
-        <h1>{{ lessons.title }}</h1>
-        <hr>
-        <iframe width="560" height="315" src="{{ lessons.video }}" title="YouTube video" allow="accelerometer; autoplay" allowfullscreen></iframe>
-        <br>
-        <div class="lesson_content">
-            {{ lessons.content }}
+{% block footerbottom %}
+    {% block content %}
+        <div class="formationcontainer text-center">
+            {% block sidebar %}
+                {% include "./formations/sidebar.html.twig" %}
+            {% endblock %}
+            <h1>{{ lessons.title }}</h1>
+            <hr>
+            <iframe width="560" height="315" src="{{ lessons.video }}" title="YouTube video" allow="accelerometer; autoplay" allowfullscreen></iframe>
+            <br>
+               <p>{{ lessons.content|striptags }}</p>
         </div>
-    </div>
+{% endblock %}
 {% endblock %}

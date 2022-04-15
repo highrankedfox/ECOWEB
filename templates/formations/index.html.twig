@@ -1,7 +1,6 @@
 {% extends 'base.html.twig' %}
 {% block title %}Formations{% endblock %}
 {% block content %}
-    {% block homepage %}
     <div class="blockcontainer text-center">
         <h1>Nos formations</h1>
         <br>
@@ -15,20 +14,18 @@
             <div class="container px-5 mb-3">
                 <div class="row">
                     {% for formation in formations %}
-                        <div class="col-md-4">
-                            <div class="card">
+                            <div class="card me-lg-4 mb-3">
                                 <img class="card-img-top" src="{{ vich_uploader_asset(formation, 'imageFile') }}" alt="{{ formation.imageName }}">
                                 <div class="card-body">
                                     <h5 class="card-title">{{ formation.title }}</h5>
-                                    <p class="card-text">{{ formation.description }}</p>
-                                    <a class="small btn btn-success custom-btn rounded-pill px-3" href="{{path('app_formations_see', {'id' : formation.id })}}" role="button">voir</a>
-                                    <span class="small">par {{ formation.user.firstname }} {{ formation.user.lastname }}</span>
+                                    <p class="card-text">{{ formation.description }}</p><br>
+                                    <div class="bottom-line-card">
+                                        <a class="small btn btn-success custom-btn rounded-pill mt-2" href="{{path('app_formations_see', {'id' : formation.id })}}" role="button">voir</a>
+                                    </div>
                                 </div>
-                            </div>
                         </div>
                     {% endfor %}
                 </div>
             </div>
     </div>
-    {% endblock %}
 {% endblock %}

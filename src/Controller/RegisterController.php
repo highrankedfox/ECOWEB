@@ -36,10 +36,23 @@ class RegisterController extends AbstractController
             $em = $this->doctrine->getManager();
             $em->persist($user);
             $em->flush();
+            return $this->redirectToRoute('app_thankyou');
         }
 
         return $this->render('register/index.html.twig', [
             'form' => $form->createView()
         ]);
+    }
+
+    #[Route('/merci', name: 'app_thankyou')]
+    public function thankyou(): Response
+    {
+        return $this->render('register/thankyou.html.twig');
+    }
+
+    #[Route('/termes-conditions', name: 'app_terms')]
+    public function terms(): Response
+    {
+        return $this->render('register/terms.html.twig');
     }
 }

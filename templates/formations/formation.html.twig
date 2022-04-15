@@ -1,14 +1,18 @@
 {% extends 'base.html.twig' %}
 {% block title %}{{ formation.title }}{% endblock %}
-{% block content %}
-    <div class="formationcontainer text-center">
-    {% block sidebar %}
-        {% include "./formations/sidebar.html.twig" %}
+{% block footerbottom %}
+    {% block content %}
+        <div class="formationcontainer text-center">
+        {% block sidebar %}
+            {% include "./formations/sidebar.html.twig" %}
+        {% endblock %}
+            <h1>{{ formation.title }} par {{ formation.user.firstname }} {{ formation.user.lastname }}</h1>
+            {{ formation.description }}
+            <hr>
+            <h2>Bien commencer sa formation</h2>
+            <p>
+            Nulla mattis ipsum sed consequat auctor. Sed ante leo, viverra non justo eget, scelerisque pulvinar enim. Mauris vel gravida justo. Aenean commodo enim ex. Sed pretium vulputate neque, in condimentum nisl eleifend ac. Etiam eu massa eu felis tempor fermentum. Ut dignissim id magna nec molestie. Proin efficitur, diam non finibus sollicitudin, tortor tellus rutrum erat, et vestibulum neque nunc in tortor. Sed sodales orci bibendum enim tristique bibendum. Sed bibendum at lectus sed aliquet. Suspendisse vel lorem vel mi venenatis porta vel in lacus. Donec ut nisi blandit, accumsan ligula et, vestibulum quam. Ut id mauris in neque euismod tincidunt aliquet vel nulla. Quisque lacinia consectetur felis, in cursus odio vehicula vel.
+            </p>
+        </div>
     {% endblock %}
-        <h1>{{ formation.title }} par {{ formation.user.firstname }} {{ formation.user.lastname }}</h1>
-        {{ formation.description }}
-        <hr>
-        <h2>Bien commencer sa formation</h2>
-        <div class="lesson_content">DAIPJDZAPDAZPO</div>
-    </div>
 {% endblock %}

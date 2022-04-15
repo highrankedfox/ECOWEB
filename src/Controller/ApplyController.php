@@ -37,6 +37,8 @@ class ApplyController extends AbstractController
             $em = $this->doctrine->getManager();
             $em->persist($user);
             $em->flush();
+
+            return $this->redirectToRoute('app_thankyou');
         }
 
         return $this->render('apply/index.html.twig', [

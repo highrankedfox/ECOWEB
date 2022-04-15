@@ -1,16 +1,15 @@
 {% extends 'base.html.twig' %}
-{% block title %}Confirmation d'inscription{% endblock %}
-{% block content %}
-    <div class="blockcontainer text-center">
-        <h1>Merci pour votre inscription !</h1>
-        <br>
-        <p>
-           Nous sommes ravis de vous compter parmi nous !
-            // Pour les apprenants :
-            Souhaitez-vous découvrir nos formations ?
-
-            // Pour les formateurs :
-            Un administrateur va consulter votre candidature et valider votre demande, vous recevrez un mail lorsque vous pourrez accéder à votre espace.
-        </p>
-    </div>
+{% block title %}Merci pour votre inscription !{% endblock %}
+{% block footerbottom %}
+    {% block content %}
+        <div class="blockcontainer text-center">
+            <h1>Bienvenue parmi nous</h1>
+            <p>
+                Merci d'avoir rejoint notre grande communauté ! <br>
+                Envie d'apprendre ? Vous pouvez vous connecter <a href="{{ path('app_login') }}">ici</a>.
+                <br>
+                Si vous avez candidaté pour devenir instructeur, un admin doit valider votre demande avant que vous puissiez vous connecter.
+            </p>
+        </div>
+    {% endblock %}
 {% endblock %}

@@ -73,6 +73,8 @@ class ApplicationType extends AbstractType
                 'mapped' => false,
                 'constraints' => new IsTrue(),
                 'label' => "Merci d'accepter les termes et conditions",
+                'help' => '<a href="/termes-conditions">consulter</a>',
+                'help_html' => true,
             ))
             ->add('submit', SubmitType::class, [
                 'label' => "C'est parti !",

@@ -5,6 +5,9 @@
 */
 
 /* Style general */
+body {
+    font-family: 'Raleway', sans-serif;
+}
 .btn-success.custom-btn {
     background-color: #78c2a4;
     border-color: #78c2a4;
@@ -21,6 +24,7 @@
 
 .bandeau {
     background-color: #78c2a4;
+    font-family: 'Raleway', sans-serif;
 }
 
 #mainNav {
@@ -57,27 +61,25 @@
 
 .blockcontainer .card {
     width: 18rem;
-    overflow-y: hidden;
 }
 
-.footer-home {
-    position: relative;
+.blockcontainer .card-text {
+    height: 60px;
+    overflow-y: auto;
+    text-align: left;
+}
+.bottom-line-card {
+    position: absolute;
+    margin-bottom: 5px;
     bottom: 0;
-    width: 100%;
-    height: 100px;
-}
+ }
 
-.footer-custom {
+/* Formation display */
+
+.footer-stuck {
     position: absolute;
     bottom: 0;
     width: 100%;
-    height: 100px;
-}
-
-/* Formation display */
-.card-text {
-    height: 50px;
-    overflow-y: hidden;
 }
 
 .formationcontainer {
@@ -105,27 +107,18 @@
     font-family: 'Fredoka', sans-serif;
 }
 
-.formationcontainer .sidenav {
+.sidenav {
     float: left;
-    height: 100%;
 }
 
-.formationcontainer .lesson_content {
+.lesson_content {
     text-align: justify;
-    width: 90%;
+    width: 82%;
     float: right;
 }
-
 /* Media queries */
 
 @media screen and (max-width: 780px) {
-    .footer-custom  {
-        position: relative;
-        bottom: 0;
-        width: 100%;
-        height: 85px;
-        font-size: 13px;
-    }
     .blockcontainer {
         padding: 7rem 2rem 0 2rem;
         font-size: 14px;
@@ -147,6 +140,19 @@
         padding: 5rem 0 0 0;
         font-family: 'Raleway', sans-serif;
         font-size: 18px;
+    }
+    iframe {
+        width: 90%;
+    }
+    .formationcontainer p {
+        text-align: justify;
+        width: 95%;
+        margin-left: 3%;
+    }
+    .footer-stuck {
+        position: relative;
+        bottom: 0;
+        width: 100%;
     }
 }
 
