@@ -110,11 +110,10 @@ body {
 .sidenav {
     float: left;
 }
-
 .lesson_content {
     text-align: justify;
-    width: 82%;
-    float: right;
+    width: 90%;
+    margin-left: 10%;
 }
 /* Media queries */
 
