@@ -22,12 +22,14 @@
             <input type="password" name="password" id="inputPassword" class="form-control mb-3" autocomplete="current-password" required>
 
             <input type="hidden" name="_csrf_token"
-                   value="{{ csrf_token('authenticate') }}"
-            >
+                   value="{{ csrf_token('authenticate') }}">
             <div class="checkbox mb-3">
                 <label>
                     <input type="checkbox" name="_remember_me"> Se souvenir de moi
                 </label>
+            </div>
+            <div class="small">
+                <a href="{{ path('app_passwor') }}">mot de passe oublié</a>
             </div>
 
             <button class="btn btn-success custom-btn rounded-pill" type="submit">
