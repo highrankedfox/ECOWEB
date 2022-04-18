@@ -14,7 +14,7 @@ Projet réalisé dans le cadre de l'Evaluation en Cours de Formation de la sessi
 ## I. Environnement de développement
 
 **FRONT :** 
-- HTML5, CSS3, JavaScript, Bootstrap 5
+- HTML5, CSS3, JavaScript et JQuery, Bootstrap 5
 
 **BACK :** 
 - PHP8, Symfony6 avec Symfony CLI et Composer, EasyAdmin
