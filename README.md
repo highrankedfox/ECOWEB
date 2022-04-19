@@ -6,9 +6,9 @@ Projet réalisé dans le cadre de l'Evaluation en Cours de Formation de la sessi
 
 ## Table des matières
 
-1. [Environnement de développement](#Environnement-de-développement)
-2. [Tester en local](#Tester-en-local)
-3. [Annexes](#Annexes)
+1. Environnement de développement
+2. Tester en local
+3. Annexes
 
 
 ## I. Environnement de développement
@@ -64,3 +64,7 @@ Liste des documents dans le dossier annexes :
 - Documentation technique
 - Manuel d'utilisation
 - Captures d'écrans du Trello du projet
+
+Wireframes interactifs UIzard :
+- Accueil, connexion, inscription apprenant et formateur, consulter le catalogue et les formations : https://app.uizard.io/p/32b6d7a0
+- Espace admin :
