@@ -153,6 +153,9 @@ body {
         bottom: 0;
         width: 100%;
     }
+    .connexion {
+        margin-bottom: 200px;
+    }
 }
 
 @media(min-width:780px){
