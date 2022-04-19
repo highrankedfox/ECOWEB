@@ -65,6 +65,5 @@ Liste des documents dans le dossier annexes :
 - Manuel d'utilisation
 - Captures d'écrans du Trello du projet
 
-Wireframes interactifs UIzard :
+Wireframe interactif UIzard :
 - Accueil, connexion, inscription apprenant et formateur, consulter le catalogue et les formations : https://app.uizard.io/p/32b6d7a0
-- Espace admin :
