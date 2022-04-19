@@ -67,3 +67,4 @@ Liste des documents dans le dossier annexes :
 
 Wireframe interactif UIzard :
 - Accueil, connexion, inscription apprenant et formateur, consulter le catalogue et les formations : https://app.uizard.io/p/32b6d7a0
+- Espace admin avec ajout d'une entrée pour exemple : https://app.uizard.io/p/a72eb1c0
