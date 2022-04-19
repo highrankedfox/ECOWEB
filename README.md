@@ -64,6 +64,7 @@ Liste des documents dans le dossier annexes :
 - Documentation technique
 - Manuel d'utilisation
 - Captures d'écrans du Trello du projet
+- Dossier wireframes avec wireframes mobile et desktop
 
 Wireframe interactif UIzard :
 - Accueil, connexion, inscription apprenant et formateur, consulter le catalogue et les formations : https://app.uizard.io/p/32b6d7a0
